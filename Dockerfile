@@ -1,5 +1,6 @@
 FROM nvidia/cuda:11.3.0-base-ubuntu20.04
 
+ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
   tzdata build-essential libgl1-mesa-glx libglib2.0-0 libgeos-dev python3-openslide \
   curl wget sudo vim htop ca-certificates \
@@ -31,12 +32,15 @@ ENV PATH=$CONDA_PREFIX/bin:$PATH
 # Python commonly used packages installation
 ## Using pip
 RUN pip install gpustat==0.6.0 setuptools==45
-RUN pip openslide-python==1.1.1 Pillow==8.4.0 deepdish==0.3.6
-RUN pip numpy==1.19.2 scipy==1.6.0 matplotlib==3.3.2 statsmodels==0.13.0 pandas==1.1.5
+RUN pip install openslide-python==1.1.1 Pillow==8.4.0 deepdish==0.3.6
+RUN pip install numpy==1.19.2 scipy==1.6.0 matplotlib==3.3.2 statsmodels==0.13.0 pandas==1.1.5
 RUN pip install opencv-python==4.5.1.48 scikit-image==0.18.3 scikit-learn==1.0.1 xgboost==1.0.0
 
 ## Using conda
 RUN conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+
+## Radiomics packages
+RUN pip install nibabel==3.2.1 SimpleITK==2.0.0 pyradiomics==3.0.1
 
 # Setting environment variables
 ENV HDF5_USE_FILE_LOCKING=FALSE
