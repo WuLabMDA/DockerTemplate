@@ -1,5 +1,5 @@
 # DockerTemplate
-Docker template for python biomedical research
+Dockerfile template for python biomedical research
 
 ### To configure
 * line 1: change **base image** (optional)
@@ -25,6 +25,6 @@ $ docker run -it --rm --user $(id -u):$(id -g) \
 ```
 * DATA-MAPPING: map your local data folder to container
 * CODE-MAPPING: map your local code repo to container
-* gpus/shm-size/cpuset-cpus: need to set based on your server
-* container_name: the new started container name, cannot duplicate existing ones
-* docker_image: docker image to setup the docker environment, e.g., pymed:pchen6
+* gpus/shm-size/cpuset-cpus: need to set based upon your server
+* container_name: cannot duplicate existing ones
+* docker_image: docker image to use, e.g., pymed:pchen6
