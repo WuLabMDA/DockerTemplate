@@ -41,6 +41,7 @@ RUN conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
 
 ## Radiomics packages
 RUN pip install nibabel==3.2.1 SimpleITK==2.0.0 pyradiomics==3.0.1
+RUN chmod -R 777 /home/${USER_NAME}/.cache/
 
 # Setting environment variables
 ENV HDF5_USE_FILE_LOCKING=FALSE
